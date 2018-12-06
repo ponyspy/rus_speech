@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		include header
+	body
+		.main_block
+			.header_block
+				.menu_block
+					.logo
+						a(href='/') RUS
+						span= ' | '
+						a(href='/admin') STARGAZER
+					a(href='/admin/users') ПОЛЬЗОВАТЕЛИ
+					a(href='/admin/posts') ПОСТЫ
+					a(href='/admin/categorys') КАТЕГОРИИ
+					a(href='/admin/cv') CV
+				.sub_menu_block
+					block sub_menu
+			.content_block
+				block content
