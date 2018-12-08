@@ -8,7 +8,7 @@ block header_include
 	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
 	- var include_css = ['add.css']
 	- var include_libs_js = ['jquery.pickmeup.min.js', 'wysiwyg.min.js', 'wysiwyg-editor.min.js']
-	- var include_js = ['editor.js', 'add.js', 'a_events.js']
+	- var include_js = ['editor.js', 'add.js', 'a_posts.js']
 
 block sub_menu
 	a.sub_item.back_link(href='/admin/posts') Назад
@@ -27,6 +27,8 @@ block content
 			+form_text_single('s_title', post)
 			.form_title Описание:
 			+form_text_multi('description', post)
+			.form_title Видео YouTube / Vimeo:
+			input(type='text', name='video', value=(post.video && post.video.provider) ? (post.video.provider == 'youtube' ? 'https://youtu.be/' + post.video.id : 'https://vimeo.com/' + post.video.id) : '')
 			.form_title Обложка:
 			+form_multiple_files('attach', post)(accept='application/pdf,application/zip')
 			.form_title Файл ZIP / PDF:

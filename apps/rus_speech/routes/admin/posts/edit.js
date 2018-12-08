@@ -12,6 +12,9 @@ module.exports = function(Model, Params) {
 	var filesDelete = Params.upload.files_delete;
 	var checkNested = Params.locale.checkNested;
 
+	var youtubeId = Params.helpers.youtubeId;
+	var vimeoId = Params.helpers.vimeoId;
+
 
 	module.index = function(req, res, next) {
 		var id = req.params.post_id;
@@ -40,6 +43,20 @@ module.exports = function(Model, Params) {
 			p_item.status = post.status;
 			p_item.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			p_item.categorys = post.categorys.filter(function(category) { return category != 'none'; });
+
+			if (youtubeId(post.video)) {
+				p_item.video = {
+					provider: 'youtube',
+					id: youtubeId(post.video)
+				}
+			} else if (vimeoId(post.video)) {
+				p_item.video = {
+					provider: 'vimeo',
+					id: vimeoId(post.video)
+				}
+			} else {
+				p_item.video = undefined;
+			}
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 
