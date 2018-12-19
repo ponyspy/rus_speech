@@ -6,7 +6,7 @@ exports.index = function(req, res, next) {
 
 		var font = fonts[Math.floor(Math.random() * fonts.length)];
 
-		figlet('KOSMOS\nSTARGAZER', {font: font, horizontalLayout: 'default', verticalLayout: 'default'}, function(err, data) {
+		figlet('RUS_SPEECH\nSTARGAZER', {font: font, horizontalLayout: 'default', verticalLayout: 'default'}, function(err, data) {
 			if (err) return next(err);
 
 			res.render('admin/index.pug', {data: data, font: font});
