@@ -51,6 +51,15 @@ var categorySchema = new Schema({
 	date: { type: Date, default: Date.now, index: true },
 });
 
+var memberSchema = new Schema({
+	name: { type: String, trim: true, locale: true },
+	intro: { type: String, trim: true, locale: true },
+	photo: { type: String },
+	status: String,	// hidden
+	_short_id: { type: String, unique: true, index: true, sparse: true },
+	date: { type: Date, default: Date.now, index: true },
+});
+
 
 // ------------------------
 // *** Index Block ***
@@ -59,6 +68,7 @@ var categorySchema = new Schema({
 
 postSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 categorySchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+memberSchema.index({'name.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 
 
 // ------------------------
@@ -70,6 +80,7 @@ userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
 
 postSchema.plugin(mongooseLocale);
 categorySchema.plugin(mongooseLocale);
+memberSchema.plugin(mongooseLocale);
 
 
 // ------------------------
@@ -81,3 +92,4 @@ module.exports.User = mongoose.model('User', userSchema);
 
 module.exports.Category = mongoose.model('Category', categorySchema);
 module.exports.Post = mongoose.model('Post', postSchema);
+module.exports.Member = mongoose.model('Member', memberSchema);
