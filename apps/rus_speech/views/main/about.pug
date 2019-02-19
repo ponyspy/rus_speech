@@ -17,7 +17,8 @@ block content
 	.team_block
 		.team_title КОМАНДА
 		.team_members
-			.mamber_item
-				.mamber_photo
-				.member_name Анна Петанова
-				.member_intro Преподаватель русского языка как иностранного, и другие подробности
+			each member in members
+				.mamber_item
+					.mamber_photo(style='background-image: url(' + member.photo + ')')
+					.member_name= member.i18n.name.get(locale)
+					.member_intro= member.i18n.intro.get(locale)

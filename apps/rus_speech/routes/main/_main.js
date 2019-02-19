@@ -4,7 +4,7 @@ var Model = require(__glob_root + '/models/main.js');
 
 var main = {
 	index: require('./index.js')(Model),
-	content: require('./content.js'),
+	content: require('./content.js')(Model),
 	options: require('./options.js')(Model)
 };
 
