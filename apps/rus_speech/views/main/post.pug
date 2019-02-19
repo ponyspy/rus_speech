@@ -1,0 +1,21 @@
+extends layout
+
+block header_meta
+	- var content_title= ''
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['post.css']
+	- var include_js = ['post.js']
+
+block content
+	.post_block
+		.post_title=post.i18n.title.get(locale)
+		.post_s_title=post.i18n.s_title.get(locale)
+		.post_intro=post.i18n.intro.get(locale)
+		if post.video && post.video.provider
+			- var provider_path= post.video.provider == 'youtube' ? 'https://www.youtube.com/embed/' : 'https://player.vimeo.com/video/'
+			.post_video: .video_inner: iframe.video(src=provider_path + post.video.id, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
+		else
+			.post_poster(style='background-image: url(' + post.poster + ')')
+		.post_description=post.i18n.description.get(locale)

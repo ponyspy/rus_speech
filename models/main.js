@@ -25,6 +25,7 @@ var userSchema = new Schema({
 var postSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	s_title: { type: String, trim: true, locale: true },
+	intro: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	categorys: [{ type: ObjectId, ref: 'Category' }],
 	poster: { type: String },
