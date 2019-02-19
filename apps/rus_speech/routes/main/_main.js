@@ -4,6 +4,7 @@ var Model = require(__glob_root + '/models/main.js');
 
 var main = {
 	index: require('./index.js')(Model),
+	content: require('./content.js'),
 	options: require('./options.js')(Model)
 };
 
@@ -12,6 +13,19 @@ module.exports = (function() {
 
 	router.route('/')
 		.get(main.index.index);
+
+	router.route('/post/:id')
+		.get(main.index.post);
+
+	router.route('/post').get(function(req, res) {
+		res.redirect('/');
+	});
+
+	router.route('/about')
+		.get(main.content.about);
+
+	router.route('/lessons')
+		.get(main.content.lessons);
 
 	router.route('/lang/:locale').get(function(req, res) {
 		res.cookie('locale', req.params.locale);
