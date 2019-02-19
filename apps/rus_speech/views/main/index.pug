@@ -9,4 +9,19 @@ block header_include
 	- var include_js = ['main.js']
 
 block content
-	h1 main!
+	.categorys_block
+		.category_item(id='all') all
+		each category in categorys
+			.category_item(id=category._short_id)= category.i18n.title.get(locale)
+
+	.posts_block
+		each post in posts
+			.post_item
+				.post_poster(style='background-image: url(' + post.poster + ')')
+				.post_categorys
+					each category in post.categorys
+						.p_category_item= category.i18n.title.get(locale)
+				.post_title=post.i18n.title.get(locale)
+				.post_s_title=post.i18n.s_title.get(locale)
+
+	.posts_more Загрузить еще...
