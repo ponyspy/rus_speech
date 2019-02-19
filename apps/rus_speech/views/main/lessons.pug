@@ -1,0 +1,12 @@
+extends layout
+
+block header_meta
+	- var content_title= ''
+	- var content_description= ''
+
+block header_include
+	- var include_css = ['lessons.css']
+	//- - var include_js = ['lessons.js']
+
+block content
+	h1 lessons!
