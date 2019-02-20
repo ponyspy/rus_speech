@@ -5,16 +5,16 @@ html
 	body
 		.main_block
 			.title_block: .title_inner
-				.logo_block
+				a.logo_block(href='/')
 					img.logo(src='/stuff/rus_speech/icons/logo/main.svg')
 					.logo_text Time to Speak Russian
 				.menu_block
 					a(href='/lessons') уроки по skype
 					a(href='/about') о нас
 				.social_block
-					a(href='#', target='_blank'): img(src='/stuff/rus_speech/icons/social/f.svg')
+					a(href='#', target='_blank'): img(src='/stuff/rus_speech/icons/social/fb.svg')
 					a(href='#', target='_blank'): img(src='/stuff/rus_speech/icons/social/yt.svg')
-				if (session && session.user_id)
+				//- if (session && session.user_id)
 					.stargazer_block
 							a(href='/auth') stargazer
 							span= ' | '
