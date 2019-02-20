@@ -10,7 +10,7 @@ block header_include
 
 block content
 	.categorys_block
-		.category_item(id='all') all
+		.category_item(id='all') все
 		each category in categorys
 			.category_item(id=category._short_id)= category.i18n.title.get(locale)
 
@@ -21,7 +21,7 @@ block content
 				.post_categorys
 					each category in post.categorys
 						.p_category_item= category.i18n.title.get(locale)
-				.post_title=post.i18n.title.get(locale)
+				a.post_title(href='/post/' + post._short_id)=post.i18n.title.get(locale)
 				.post_s_title=post.i18n.s_title.get(locale)
 
-	.posts_more Загрузить еще...
+	.posts_more: span Загрузить еще
