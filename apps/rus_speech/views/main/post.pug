@@ -20,9 +20,9 @@ block content
 		else
 			.post_poster(style='background-image: url(' + post.poster + ')')
 		.post_description!=post.i18n.description.get(locale)
-		.post_attach_block
+		.post_attach_block: .attach_inner
 			each item in new Array(5)
-				.attach_item
+				.attach_item: .item_inner
 					.attach_price 5
 					.attach_description Название файла 1 урока среднее
 					.attach_button.preview предпросмотр
