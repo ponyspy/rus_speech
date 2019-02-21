@@ -21,7 +21,7 @@ block content
 			.post_poster(style='background-image: url(' + post.poster + ')')
 		.post_description!=post.i18n.description.get(locale)
 		.post_attach_block: .attach_inner
-			each item in ['paid_pr', 'free', 'paid', 'free', 'paid', 'paid_pr']
+			each item in ['paid_pr', 'free', 'paid', 'free', 'paid', 'paid_pr', 'paid', 'paid_pr']
 				.attach_item: .item_inner
 					if (item == 'paid' || item == 'paid_pr')
 						.attach_price $5.00
