@@ -15,7 +15,7 @@ module.exports = function(Model) {
 	module.post = function(req, res) {
 		var id = req.params.id;
 
-		Post.findById(id).populate('categorys').exec(function(err, post) {
+		Post.findOne({ '_short_id': id }).where('status').ne('hidden').populate('categorys').exec(function(err, post) {
 			res.render('main/post.pug', { post: post });
 		});
 	};

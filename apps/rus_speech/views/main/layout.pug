@@ -11,19 +11,18 @@ html
 				.menu_block
 					a(href='/lessons') уроки по skype
 					a(href='/about') о нас
+				if (session && session.user_id)
+					.stargazer_block
+							a(href='/auth') stargazer
+							a(href='/auth/logout') выход
 				.social_block
 					a(href='#', target='_blank'): img(src='/stuff/rus_speech/icons/social/fb.svg')
 					a(href='#', target='_blank'): img(src='/stuff/rus_speech/icons/social/yt.svg')
-				//- if (session && session.user_id)
-					.stargazer_block
-							a(href='/auth') stargazer
-							span= ' | '
-							a(href='/auth/logout') выход
 			.content_block
 				block content
 			.footer_block: .footer_inner
-				.copy_block © some copiright
-				.language
-					a(href='/lang/ru', class=locale == 'ru' ? 'active': ''): span RUS
-					a(href='/lang/en', class=locale == 'en' ? 'active': ''): span ENG
+				.copy_block!= '&copy; Some Copyright ' + new Date().getFullYear()
+				.lang_block
+					a(href='/lang/ru', class=locale == 'ru' ? 'active': '') RUS
+					a(href='/lang/en', class=locale == 'en' ? 'active': '') ENG
 		include counters

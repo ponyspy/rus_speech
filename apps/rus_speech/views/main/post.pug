@@ -1,12 +1,12 @@
 extends layout
 
 block header_meta
-	- var content_title= ''
+	- var content_title= 'Time to Speak Russian | ' + post.i18n.title.get(locale)
 	- var content_description= ''
 
 block header_include
 	- var include_css = ['post.css']
-	- var include_js = ['post.js']
+	//- - var include_js = ['post.js']
 
 block content
 	.post_block
