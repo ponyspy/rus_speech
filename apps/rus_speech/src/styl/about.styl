@@ -23,7 +23,7 @@
 
 
 .team_block
-	margin-bottom 120px
+	margin-bottom 80px
 	.team_title
 		margin-top 40px
 		margin-bottom 40px
@@ -48,25 +48,31 @@
 			font 20px/22px 'Montserrat SemiBold'
 	.team_members
 		font-size 0
-		.mamber_item
-			width 50%
-			display inline-block
-			text-align center
-			.mamber_photo
+		overflow hidden
+		.members_inner
+			margin-left -140px
+			.mamber_item
+				width 50%
 				display inline-block
-				width 30%
-				padding-top 30%
-				background-position center
-				background-size cover
-				background-repeat no-repeat
-				border-radius 100%
-			.member_name
-				margin-top 20px
 				text-align center
-				font 20px/22px 'Montserrat SemiBold'
-				color rgb(78, 91, 125)
-			.member_intro
-				margin-top 20px
-				text-align center
-				color rgb(74, 74, 74)
-				font 18px/20px 'Lora Regular'
+				box-sizing border-box
+				padding-left 140px
+				margin-bottom 40px
+				.mamber_photo
+					display inline-block
+					width 30%
+					padding-top 30%
+					background-position center
+					background-size cover
+					background-repeat no-repeat
+					border-radius 100%
+				.member_name
+					margin-top 20px
+					text-align center
+					font 20px/22px 'Montserrat SemiBold'
+					color rgb(78, 91, 125)
+				.member_intro
+					margin-top 10px
+					text-align center
+					color rgb(74, 74, 74)
+					font 18px/26px 'Lora Regular'
