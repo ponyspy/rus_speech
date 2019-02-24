@@ -12,3 +12,11 @@ block content
 	.lessons_block
 		.lessons_title Онлайн уроки
 		.lessons_s_title Если вы студент и хотите позаниматься онлайн, то оставьте свои контакты и мы свяжемся с вами:
+
+	.schedule_block: .schedule_inner
+		each item in [{'price': '$2.50', 'desc': '1 занятие'}, {'price': '$4.80', 'desc': '2 занятия'}, {'price': '$12.00', 'desc': '5 занятий'}, {'price': '$20.00', 'desc': '10 занятий'}]
+			.schedule_item: .item_inner
+				.schedule_price= item.price
+				.schedule_description= item.desc
+				//- .schedule_button.preview предпросмотр
+				.schedule_button.buy купить
