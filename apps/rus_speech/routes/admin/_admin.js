@@ -8,6 +8,7 @@ var admin = {
 	posts: require('./posts/_posts.js'),
 	members: require('./members/_members.js'),
 	categorys: require('./categorys/_categorys.js'),
+	units: require('./units/_units.js'),
 	cv: require('./cv.js'),
 	users: require('./users/_users.js'),
 	options: require('./options.js')
@@ -28,7 +29,8 @@ module.exports = (function() {
 		.get(checkAuth, admin.cv.edit)
 		.post(checkAuth, admin.cv.edit_form);
 
-	router.use('/posts', checkAuth, upload.fields([ { name: 'poster' }, { name: 'attach' } ]), admin.posts);
+	router.use('/posts', checkAuth, upload.fields([ { name: 'poster' } ]), admin.posts);
+	router.use('/units', checkAuth, upload.fields([ { name: 'preview' }, { name: 'attach' } ]), admin.units);
 	router.use('/members', checkAuth, upload.fields([ { name: 'photo' } ]), admin.members);
 	router.use('/categorys', checkAuth, admin.categorys);
 	router.use('/users', checkAuth, admin.users);

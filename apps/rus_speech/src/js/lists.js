@@ -179,5 +179,6 @@ $(function() {
 		.on('click', '.item_rm.post', {path:'/admin/posts/remove', description: 'Удалить пост?'}, remove)
 		.on('click', '.item_rm.category', {path:'/admin/categorys/remove', description: 'Удалить кутегорию?'}, remove)
 		.on('click', '.item_rm.member', {path:'/admin/members/remove', description: 'Удалить участника?'}, remove)
+		.on('click', '.item_rm.unit', {path:'/admin/units/remove', description: 'Удалить матерал?'}, remove);
 
 });

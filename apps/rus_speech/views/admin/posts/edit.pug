@@ -33,8 +33,8 @@ block content
 			input(type='text', name='video', value=(post.video && post.video.provider) ? (post.video.provider == 'youtube' ? 'https://youtu.be/' + post.video.id : 'https://vimeo.com/' + post.video.id) : '')
 			.form_title Обложка:
 			+form_single_file('poster', post)(accept='image/jpeg,image/png,image/gif')
-			.form_title Файл ZIP / PDF:
-			+form_multiple_files('attach', post)(accept='application/pdf,application/zip')
+			.form_title Материалы:
+			+form_multiple_select('units', units, post.units)
 			.form_title Категории:
 			+form_multiple_select('categorys', categorys, post.categorys)
 			.form_title Статус:

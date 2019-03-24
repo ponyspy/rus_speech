@@ -7,10 +7,9 @@ module.exports = function(Model, Params) {
 
 	var Post = Model.Post;
 	var Category = Model.Category;
+	var Unit = Model.Unit;
 
 	var uploadImage = Params.upload.image;
-	var filesUpload = Params.upload.files_upload;
-	var filesDelete = Params.upload.files_delete;
 	var checkNested = Params.locale.checkNested;
 
 	var youtubeId = Params.helpers.youtubeId;
@@ -21,7 +20,11 @@ module.exports = function(Model, Params) {
 		Category.find().exec(function(err, categorys) {
 			if (err) return next(err);
 
-			res.render('admin/posts/add.pug', { categorys: categorys });
+			Unit.find().exec(function(err, units) {
+				if (err) return next(err);
+
+				res.render('admin/posts/add.pug', { categorys: categorys, units: units });
+			});
 		});
 	};
 
@@ -36,6 +39,7 @@ module.exports = function(Model, Params) {
 		p_item.status = post.status;
 		p_item.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		p_item.categorys = post.categorys.filter(function(category) { return category != 'none'; });
+		p_item.units = post.units.filter(function(unit) { return unit != 'none'; });
 
 		if (youtubeId(post.video)) {
 			p_item.video = {
@@ -70,7 +74,6 @@ module.exports = function(Model, Params) {
 
 		async.series([
 			async.apply(uploadImage, p_item, 'posts', 'poster', 600, files.poster && files.poster[0], null),
-			async.apply(filesUpload, p_item, 'posts', 'files', post, files),
 		], function(err, results) {
 			if (err) return next(err);
 

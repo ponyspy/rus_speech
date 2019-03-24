@@ -2,7 +2,7 @@ extends ../layout
 include ../_forms.pug
 
 block header_meta
-	- var content_title= 'ДОБАВИТЬ ПОСТ'
+	- var content_title= 'РЕДАКТИРОВАТЬ МАТЕРИАЛ'
 
 block header_include
 	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
@@ -11,35 +11,27 @@ block header_include
 	- var include_js = ['editor.js', 'add.js', 'a_events.js']
 
 block sub_menu
-	a.sub_item.back_link(href='/admin/posts') Назад
+	a.sub_item.back_link(href='/admin/units') Назад
 	span.sub_item.toggle_eng Перевод
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')
-		input.form_submit(type='submit', value='Добавить')
+		input.form_submit(type='submit', value='Сохранить')
 
 block content
 	.form_block
 		.title= content_title
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
-			+form_text_single('title')
-			.form_title Подзаголовок:
-			+form_text_single('s_title')
-			.form_title Интро:
-			+form_text_multi('intro')
+			+form_text_single('title', unit)
 			.form_title Описание:
-			+form_text_multi('description')
-			.form_title Видео YouTube / Vimeo:
-			input(type='text', name='video')
-			.form_title Обложка:
-			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
-			.form_title Материалы:
-			+form_multiple_select('units', units)
-			.form_title Категории:
-			+form_multiple_select('categorys', categorys)
+			+form_text_multi('description', unit)
+			.form_title Файл ZIP / PDF:
+			+form_single_file('attach', unit)(accept='application/pdf,application/zip')
+			.form_title Превью ZIP / PDF:
+			+form_single_file('preview', unit)(accept='application/pdf,application/zip')
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
-				option(value='hidden') Скрытый
+				option(value='hidden', selected= unit.status == 'hidden' && 'hidden') Скрытый
 			.form_title Дата публикации:
-			+form_date('date')
+			+form_date('date', unit.date)
