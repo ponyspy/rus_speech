@@ -30,24 +30,34 @@
 	padding-right 40px
 	box-sizing border-box
 	.post_item
-		margin-top 40px
-		margin-bottom 40px
-		border-bottom 1px solid rgb(225, 225, 225)
-		padding-bottom 40px
-		.post_poster
-			width 100%
+		margin-top 80px
+		.post_main
 			display block
-			padding-top 60%
-			background-position center
-			background-size cover
-			background-repeat no-repeat
-			margin-bottom 30px
+			text-decoration none
+			&:hover .post_title
+				color rgb(82, 127, 245)
+			.post_poster
+				width 100%
+				display block
+				padding-top 60%
+				background-position center
+				background-size cover
+				background-repeat no-repeat
+				margin-bottom 20px
+			.post_title
+				margin-top 20px
+				margin-bottom 20px
+				font 32px/34px 'Montserrat Bold'
+				color rgb(74, 74, 74)
 		.post_categorys
+			margin-bottom 20px
 			.p_category_item
 				cursor pointer
 				text-transform uppercase
 				display inline-block
 				color rgb(82, 127, 245)
+				// color rgb(255, 91, 91)
+				// color rgb(148, 156, 177)
 				font 14px/16px 'Montserrat Bold'
 				margin-right 20px
 				&:hover
@@ -57,15 +67,6 @@
 					margin-right 0
 				&:before
 					content '#'
-		.post_title
-			margin-top 25px
-			margin-bottom 25px
-			font 32px/34px 'Montserrat Bold'
-			color rgb(74, 74, 74)
-			display block
-			text-decoration none
-			&:hover
-				color rgb(82, 127, 245)
 		.post_s_title
 			font 20px/22px 'Lora Regular'
 			color rgb(165, 165, 165)
@@ -74,6 +75,7 @@
 .posts_more
 	text-align center
 	margin-bottom 120px
+	margin-top 80px
 	span
 		padding-top 15px
 		padding-bottom 15px
