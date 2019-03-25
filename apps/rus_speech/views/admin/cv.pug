@@ -12,7 +12,6 @@ block header_include
 block sub_menu
 	a.sub_item.back_link(href='/admin') Назад
 	span.sub_item.toggle_eng Перевод
-	a.sub_item(href='/office', target='_blank') Превью
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')
 		input.form_submit(type='submit', value='Сохранить')
@@ -21,16 +20,14 @@ block content
 	.form_block
 		.title= content_title
 		form(action='', method='post')
-			.form_title Портфолио (ссылка):
-			input(type='text', name='link', value= content.link)
-			.form_title Адрес:
-			input.ru(type='text', name='adress[ru]', value= content.adress_ru)
-			input.en(type='text', name='adress[en]', value= content.adress_en)
-			.form_title Текст CV:
+			.form_title О нас (заголовок):
+			input.ru(type='text', name='about_title[ru]', value= content.about_title_ru)
+			input.en(type='text', name='about_title[en]', value= content.about_title_en)
+			.form_title О нас (описание):
 			.content
-				textarea.ru.editor(name='cv[ru]')= content.cv_ru
-				textarea.en.editor(name='cv[en]')= content.cv_en
-			.form_title Текст CV (дополнительно):
+				textarea.ru.editor(name='about_desc[ru]')= content.about_desc_ru
+				textarea.en.editor(name='about_desc[en]')= content.about_desc_en
+			.form_title Онлайн-уроки (заголовок):
 			.content(style='overflow: hidden;')
-				textarea.ru.editor(name='desc[ru]')= content.desc_ru
-				textarea.en.editor(name='desc[en]')= content.desc_en
+				input.ru(type='text', name='lessons_title[ru]', value= content.lessons_title_ru)
+				input.en(type='text', name='lessons_title[en]', value= content.lessons_title_en)

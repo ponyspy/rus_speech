@@ -3,26 +3,23 @@ var async = require('async');
 
 exports.edit = function(req, res) {
 	async.series({
-		link: function(callback) {
-			fs.readFile(__app_root + '/static/link.html', callback);
+		about_title_ru: function(callback) {
+			fs.readFile(__app_root + '/static/about_title_ru.html', 'utf8', callback);
 		},
-		cv_ru: function(callback) {
-			fs.readFile(__app_root + '/static/cv_ru.html', callback);
+		about_title_en: function(callback) {
+			fs.readFile(__app_root + '/static/about_title_en.html', 'utf8', callback);
 		},
-		cv_en: function(callback) {
-			fs.readFile(__app_root + '/static/cv_en.html', callback);
+		about_desc_ru: function(callback) {
+			fs.readFile(__app_root + '/static/about_desc_ru.html', 'utf8', callback);
 		},
-		desc_ru: function(callback) {
-			fs.readFile(__app_root + '/static/desc_ru.html', callback);
+		about_desc_en: function(callback) {
+			fs.readFile(__app_root + '/static/about_desc_en.html', 'utf8', callback);
 		},
-		desc_en: function(callback) {
-			fs.readFile(__app_root + '/static/desc_en.html', callback);
+		lessons_title_ru: function(callback) {
+			fs.readFile(__app_root + '/static/lessons_title_ru.html', 'utf8', callback);
 		},
-		adress_ru: function(callback) {
-			fs.readFile(__app_root + '/static/adress_ru.html', callback);
-		},
-		adress_en: function(callback) {
-			fs.readFile(__app_root + '/static/adress_en.html', callback);
+		lessons_title_en: function(callback) {
+			fs.readFile(__app_root + '/static/lessons_title_en.html', 'utf8', callback);
 		}
 	}, function(err, results) {
 		res.render('admin/cv.pug', { content: results });
@@ -33,40 +30,35 @@ exports.edit_form = function(req, res) {
 	var post = req.body;
 
 	async.series({
-		link: function(callback) {
-			if (!post.link) return callback(null);
+		about_title_ru: function(callback) {
+			if (!post.about_title.ru) return callback(null);
 
-			fs.writeFile(__app_root + '/static/link.html', post.link, callback);
+			fs.writeFile(__app_root + '/static/about_title_ru.html', post.about_title.ru, callback);
 		},
-		cv_ru: function(callback) {
-			if (!post.cv.ru) return callback(null);
+		about_title_en: function(callback) {
+			if (!post.about_title.en) return callback(null);
 
-			fs.writeFile(__app_root + '/static/cv_ru.html', post.cv.ru, callback);
+			fs.writeFile(__app_root + '/static/about_title_en.html', post.about_title.en, callback);
 		},
-		cv_en: function(callback) {
-			if (!post.cv.en) return callback(null);
+		about_desc_ru: function(callback) {
+			if (!post.about_desc.ru) return callback(null);
 
-			fs.writeFile(__app_root + '/static/cv_en.html', post.cv.en, callback);
+			fs.writeFile(__app_root + '/static/about_desc_ru.html', post.about_desc.ru, callback);
 		},
-		desc_ru: function(callback) {
-			if (!post.desc.ru) return callback(null);
+		about_desc_en: function(callback) {
+			if (!post.about_desc.en) return callback(null);
 
-			fs.writeFile(__app_root + '/static/desc_ru.html', post.desc.ru, callback);
+			fs.writeFile(__app_root + '/static/about_desc_en.html', post.about_desc.en, callback);
 		},
-		desc_en: function(callback) {
-			if (!post.desc.en) return callback(null);
+		lessons_title_ru: function(callback) {
+			if (!post.lessons_title.ru) return callback(null);
 
-			fs.writeFile(__app_root + '/static/desc_en.html', post.desc.en, callback);
+			fs.writeFile(__app_root + '/static/lessons_title_ru.html', post.lessons_title.ru, callback);
 		},
-		adress_ru: function(callback) {
-			if (!post.adress.ru) return callback(null);
+		lessons_title_en: function(callback) {
+			if (!post.lessons_title.en) return callback(null);
 
-			fs.writeFile(__app_root + '/static/adress_ru.html', post.adress.ru, callback);
-		},
-		adress_en: function(callback) {
-			if (!post.adress.en) return callback(null);
-
-			fs.writeFile(__app_root + '/static/adress_en.html', post.adress.en, callback);
+			fs.writeFile(__app_root + '/static/lessons_title_en.html', post.lessons_title.en, callback);
 		}
 	}, function(err, results) {
 		res.redirect('back');
