@@ -18,7 +18,7 @@ block content
 		each post in posts
 			.post_item
 				if post.poster
-					.post_poster(style='background-image: url(' + post.poster + ')')
+					a.post_poster(href='/post/' + post._short_id, style='background-image: url(' + post.poster + ')')
 				.post_categorys
 					each category in post.categorys
 						.p_category_item= category.i18n.title.get(locale)
