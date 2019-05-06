@@ -10,9 +10,7 @@ module.exports = function(Model, Params) {
 
 	var uploadImage = Params.upload.image;
 	var checkNested = Params.locale.checkNested;
-
-	var youtubeId = Params.helpers.youtubeId;
-	var vimeoId = Params.helpers.vimeoId;
+	var uploadImagesContent = Params.upload.image_content;
 
 
 	module.index = function(req, res, next) {
@@ -48,20 +46,6 @@ module.exports = function(Model, Params) {
 			p_item.categorys = post.categorys.filter(function(category) { return category != 'none'; });
 			p_item.units = post.units.filter(function(unit) { return unit != 'none'; });
 
-			if (youtubeId(post.video)) {
-				p_item.video = {
-					provider: 'youtube',
-					id: youtubeId(post.video)
-				}
-			} else if (vimeoId(post.video)) {
-				p_item.video = {
-					provider: 'vimeo',
-					id: vimeoId(post.video)
-				}
-			} else {
-				p_item.video = undefined;
-			}
-
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 
 			locales.forEach(function(locale) {
@@ -74,12 +58,12 @@ module.exports = function(Model, Params) {
 				checkNested(post, [locale, 'intro'])
 					&& p_item.setPropertyLocalised('intro', post[locale].intro, locale);
 
-				checkNested(post, [locale, 'description'])
-					&& p_item.setPropertyLocalised('description', post[locale].description, locale);
 			});
 
 			async.series([
 				async.apply(uploadImage, p_item, 'posts', 'poster', 600, files.poster && files.poster[0], post.poster_del),
+				async.apply(uploadImagesContent, p_item, post, 'posts', checkNested(post, ['ru', 'description']) ? 'ru' : false),
+				async.apply(uploadImagesContent, p_item, post, 'posts', checkNested(post, ['en', 'description']) ? 'en' : false),
 			], function(err, results) {
 				if (err) return next(err);
 

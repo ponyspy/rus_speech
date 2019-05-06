@@ -28,9 +28,7 @@ block content
 			.form_title Интро:
 			+form_text_multi('intro')
 			.form_title Описание:
-			+form_text_multi('description')
-			.form_title Видео YouTube / Vimeo:
-			input(type='text', name='video')
+			+form_text_multi('description')(classes=['image', 'video', 'header', 'order', 'unorder'])
 			.form_title Обложка:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
 			.form_title Материалы:

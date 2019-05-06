@@ -32,10 +32,6 @@ var postSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	categorys: [{ type: ObjectId, ref: 'Category' }],
 	poster: { type: String },
-	video: {
-		provider: String,
-		id: String
-	},
 	units: [{ type: ObjectId, ref: 'Unit' }],
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	status: String,

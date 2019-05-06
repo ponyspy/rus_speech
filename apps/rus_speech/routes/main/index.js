@@ -5,7 +5,7 @@ module.exports = function(Model) {
 	var Category = Model.Category;
 
 	module.index = function(req, res) {
-		Post.find().populate('categorys').exec(function(err, posts) {
+		Post.find().sort('-date').populate('categorys').exec(function(err, posts) {
 			Category.find().exec(function(err, categorys) {
 				res.render('main/index.pug', { posts: posts, categorys: categorys });
 			});
