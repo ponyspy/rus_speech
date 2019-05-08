@@ -1,0 +1,10 @@
+each post in posts
+	.post_item
+		a.post_main(href='/post/' + post._short_id)
+			if post.poster
+				.post_poster(style='background-image: url(' + post.poster + ')')
+			.post_title=post.i18n.title.get(locale)
+		.post_categorys
+			each category in post.categorys
+				.p_category_item= category.i18n.title.get(locale)
+		.post_s_title=post.i18n.s_title.get(locale)

@@ -12,7 +12,8 @@ module.exports = (function() {
 	var router = express.Router();
 
 	router.route('/')
-		.get(main.index.index);
+		.get(main.index.index)
+		.post(main.index.get_posts);
 
 	router.route('/post/:id')
 		.get(main.index.post);
