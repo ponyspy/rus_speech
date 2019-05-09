@@ -8,8 +8,10 @@ module.exports = function(Model) {
 
 	module.index = function(req, res) {
 		Post.find().sort('-date').populate('categorys').exec(function(err, posts) {
-			Category.find().exec(function(err, categorys) {
-				res.render('main/index.pug', { posts: posts, categorys: categorys });
+			Post.find().where('status').ne('hidden').distinct('categorys').exec(function(err, c_ids) {
+				Category.find().where('_id').in(c_ids).exec(function(err, categorys) {
+					res.render('main/index.pug', { posts: posts, categorys: categorys });
+				});
 			});
 		});
 	};
