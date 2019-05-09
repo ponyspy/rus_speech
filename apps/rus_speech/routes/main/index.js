@@ -27,6 +27,7 @@ module.exports = function(Model) {
 			Query.where('status').ne('hidden').populate('categorys').sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, posts) {
 				var opts = {
 					posts: posts,
+					category: category,
 					locale: req.locale,
 					compileDebug: false, debug: false, cache: true, pretty: false
 				};
