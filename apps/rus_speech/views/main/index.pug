@@ -10,9 +10,8 @@ block header_include
 
 block content
 	.categorys_block
-		.category_item(id='all') все
 		each category in categorys
-			.category_item(id=category._short_id)= category.i18n.title.get(locale)
+			.category_item(class=category._short_id)= category.i18n.title.get(locale)
 
 	.posts_block
 

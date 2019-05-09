@@ -18,8 +18,9 @@ module.exports = function(Model) {
 		var post = req.body;
 
 		Category.findOne({ '_short_id': post.context.category }).where('status').ne('hidden').exec(function(err, category) {
+			if (err) return res.send('end');
 
-			var Query = post.context.category !== 'all'
+			var Query = post.context.category !== ''
 				? Post.find({ 'categorys': category._id })
 				: Post.find();
 

@@ -3,11 +3,10 @@ var $document = $(document);
 
 
 $window.on('load hashchange', function(e) {
-	var hash = window.location.hash.replace('#', '');
 	var context = {
 		skip: 0,
 		limit: 5,
-		category: hash !== '' ? hash : 'all'
+		category: window.location.hash.replace('#', '')
 	};
 
 	var scrollLoader = function(e, fire) {
@@ -31,7 +30,7 @@ $window.on('load hashchange', function(e) {
 	};
 
 	$('.posts_more').removeClass('hide');
-	$('#' + context.category).addClass('current');
+	$(context.category != '' ? '.' + context.category : '').addClass('current');
 
 	$.ajax({url: '', method: 'POST', data: { context: context }, async: false }).done(function(data) {
 		if (data !== 'end') {
@@ -59,7 +58,7 @@ $(function() {
 
 			$('.category_item').removeClass('current').filter(this).addClass('current');
 
-			window.location.href = '#' + $(this).attr('id');
+			window.location.href = '#' + $(this).attr('class').split(' ')[1];
 		})
 		.on('click', '.category_item.current', function(e) {
 			e.preventDefault();
