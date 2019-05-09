@@ -11,7 +11,7 @@ block header_include
 block content
 	.categorys_block
 		each category in categorys
-			.category_item(class=category._short_id)= category.i18n.title.get(locale)
+			.category_item(class=category.sym ? category.sym : category._short_id)= category.i18n.title.get(locale)
 
 	.posts_block
 

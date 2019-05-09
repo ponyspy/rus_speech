@@ -16,11 +16,12 @@ module.exports = function(Model) {
 
 	module.get_posts = function(req, res) {
 		var post = req.body;
+		var id = post.context.category;
 
-		Category.findOne({ '_short_id': post.context.category }).where('status').ne('hidden').exec(function(err, category) {
+		Category.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').exec(function(err, category) {
 			if (err) return res.send('end');
 
-			var Query = post.context.category !== ''
+			var Query = id !== ''
 				? Post.find({ 'categorys': category._id })
 				: Post.find();
 

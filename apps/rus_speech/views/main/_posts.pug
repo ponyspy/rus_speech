@@ -9,5 +9,5 @@ each post in posts
 			.post_title=post.i18n.title.get(locale)
 		.post_categorys
 			each p_category in post.categorys
-				.category_item(class=p_category._short_id, class=category && p_category._short_id == category._short_id ? 'current': '')= p_category.i18n.title.get(locale)
+				.category_item(class=p_category.sym ? p_category.sym : p_category._short_id, class=category && p_category._short_id == category._short_id ? 'current': '')= p_category.i18n.title.get(locale)
 		.post_s_title=post.i18n.s_title.get(locale)
