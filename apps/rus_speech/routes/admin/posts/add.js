@@ -35,6 +35,7 @@ module.exports = function(Model, Params) {
 
 		p_item._short_id = shortid.generate();
 		p_item.status = post.status;
+		p_item.sym = post.sym ? post.sym : undefined;
 		p_item.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		p_item.categorys = post.categorys.filter(function(category) { return category != 'none'; });
 		p_item.units = post.units.filter(function(unit) { return unit != 'none'; });
