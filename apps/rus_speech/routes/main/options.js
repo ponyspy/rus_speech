@@ -3,28 +3,25 @@ var sitemap = require('sitemap');
 module.exports = function(Model, Params) {
 	var module = {};
 
-	var Work = Model.Work;
+	var Post = Model.Post;
 
 	module.sitemap = function(req, res, next) {
-		Work.where('status').ne('hidden').exec(function(err, works) {
-			var get_tree = function(base, works) {
-				return works.reduce(function(prev, work) {
-					if (base.replace('projects', 'project') == work.type) {
-						prev.push({ url: '/' + base + '/' + work._short_id });
-					}
 
-					return prev;
-				}, [{ url: '/' + base }]);
-			};
+		Post.where('status').ne('hidden').exec(function(err, posts) {
+			var arr_posts = posts.map(function(post) {
+				return {
+					url: '/posts/' + (post.sym ? post.sym : post._short_id)
+				};
+			});
 
 			var site_map = sitemap.createSitemap ({
 				hostname: 'https://' + req.hostname,
 				// cacheTime: 600000,
 				urls: [
 					{ url: '/' },
-					{ url: '/office' },
-				].concat(get_tree('projects', works))
-				 .concat(get_tree('research', works))
+					{ url: '/about' },
+					// { url: '/lessons' },
+				].concat(arr_posts)
 			});
 
 			site_map.toXML(function (err, xml) {
