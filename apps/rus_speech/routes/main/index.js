@@ -18,7 +18,7 @@ module.exports = function(Model) {
 		var post = req.body;
 		var id = post.context.category;
 
-		Category.findOne({ $or: [ { '_short_id': id }, { 'sym': id } ] }).where('status').ne('hidden').exec(function(err, category) {
+		Category.findOne({ $or: [ { '_short_id': id || false }, { 'sym': id || false } ] }).where('status').ne('hidden').exec(function(err, category) {
 			if (err) return res.send('end');
 
 			var Query = id !== ''
