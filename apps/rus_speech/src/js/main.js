@@ -5,7 +5,7 @@ var $document = $(document);
 $window.on('load hashchange', function(e) {
 	var context = {
 		skip: 0,
-		limit: 5,
+		limit: 10,
 		category: window.location.hash.replace('#', '')
 	};
 
