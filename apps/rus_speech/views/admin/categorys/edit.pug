@@ -25,7 +25,7 @@ block content
 			.form_title Название:
 			+form_text_single('title', category)
 			.form_title Синоним:
-			input(type='text', name='sym', value=category.sym)
+			input(type='text', name='sym', value=category.sym, placeholder=category._short_id)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный

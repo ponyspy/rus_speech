@@ -30,7 +30,7 @@ module.exports = function(Model, Params) {
 				return next(new Error('Synonym should not include spaces!'));
 			}
 
-			category.sym = post.sym && post.sym.toLowerCase();
+			category.sym = post.sym ? post.sym.toLowerCase() : undefined;
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 
