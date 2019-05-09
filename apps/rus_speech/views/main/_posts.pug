@@ -1,14 +1,13 @@
 if category
 	.posts_title= category.i18n.title.get(locale)
 
-.posts_items
-	each post in posts
-		.post_item
-			a.post_main(href='/post/' + post._short_id)
-				if post.poster
-					.post_poster(style='background-image: url(' + post.poster + ')')
-				.post_title=post.i18n.title.get(locale)
-			.post_categorys
-				each p_category in post.categorys
-					.category_item(class=p_category._short_id, class=category && p_category._short_id == category._short_id ? 'current': '')= p_category.i18n.title.get(locale)
-			.post_s_title=post.i18n.s_title.get(locale)
+each post in posts
+	.post_item
+		a.post_main(href='/post/' + post._short_id)
+			if post.poster
+				.post_poster(style='background-image: url(' + post.poster + ')')
+			.post_title=post.i18n.title.get(locale)
+		.post_categorys
+			each p_category in post.categorys
+				.category_item(class=p_category._short_id, class=category && p_category._short_id == category._short_id ? 'current': '')= p_category.i18n.title.get(locale)
+		.post_s_title=post.i18n.s_title.get(locale)
