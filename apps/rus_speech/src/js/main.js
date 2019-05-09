@@ -32,7 +32,7 @@ $window.on('load hashchange', function(e) {
 	$('.posts_more').removeClass('hide');
 	$(context.category != '' ? '.' + context.category : '').addClass('current');
 
-	$.ajax({url: '', method: 'POST', data: { context: context }, async: false }).done(function(data) {
+	$.ajax({url: '', method: 'POST', data: { init: true, context: context }, async: false }).done(function(data) {
 		if (data !== 'end') {
 			var $data = $(data);
 

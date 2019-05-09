@@ -28,6 +28,7 @@ module.exports = function(Model) {
 				var opts = {
 					posts: posts,
 					category: category,
+					init: post.init,
 					locale: req.locale,
 					compileDebug: false, debug: false, cache: true, pretty: false
 				};
