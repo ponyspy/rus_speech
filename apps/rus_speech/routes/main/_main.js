@@ -15,10 +15,10 @@ module.exports = (function() {
 		.get(main.index.index)
 		.post(main.index.get_posts);
 
-	router.route('/post/:id')
+	router.route('/posts/:id')
 		.get(main.index.post);
 
-	router.route('/post').get(function(req, res) {
+	router.route('/posts').get(function(req, res) {
 		res.redirect('/');
 	});
 

@@ -3,7 +3,7 @@ if init && category
 
 each post in posts
 	.post_item
-		a.post_main(href='/post/' + (post.sym ? post.sym : post._short_id))
+		a.post_main(href='/posts/' + (post.sym ? post.sym : post._short_id))
 			if post.poster
 				.post_poster(style='background-image: url(' + post.poster + ')')
 			.post_title=post.i18n.title.get(locale)
