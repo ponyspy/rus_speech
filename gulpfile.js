@@ -122,7 +122,7 @@ function clean(callback) {
 
 	if (Temp) clean = clean.concat(paths.clean.temp);
 	if (Deps) clean = clean.concat(paths.clean.deps);
-	if (Reset) clean = [].concat(paths.clean.temp, paths.clean.deps, paths.clean.data);
+	if (Reset) clean = clean.concat(paths.clean.temp, paths.clean.deps, paths.clean.data);
 
 	return rimraf('{' + clean.join(',') + '}', callback);
 }
