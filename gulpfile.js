@@ -116,7 +116,7 @@ var paths = {
 	clean: {
 		base: ['public/build/**', 'public/stuff/**'],
 		temp: ['public/preview/**/*', 'uploads/**/*'],
-		deps: ['node_modules/**', 'package-lock.json'],
+		deps: ['node_modules', 'package-lock.json'],
 		data: ['public/cdn/**']
 	}
 };
