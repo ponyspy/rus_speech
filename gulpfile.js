@@ -189,8 +189,8 @@ function watch() {
 
 
 var task_clean = clean;
-		clean.description = 'Clean project folders';
-		clean.flags = clean_flags;
+		task_clean.description = 'Clean project folders';
+		task_clean.flags = clean_flags;
 
 var task_build = gulp.series(clean, gulp.parallel(styles, scripts, stuff));
 		task_build.description = 'Build all...';
