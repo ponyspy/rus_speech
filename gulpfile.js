@@ -24,7 +24,7 @@ var gulp = require('gulp'),
 var Prod = argv.p || argv.prod;
 var Lint = argv.l || argv.lint;
 var Maps = argv.m || argv.maps;
-var Force = argv.f || argv.force;
+var Force = argv.force;
 var Reset = argv.reset;
 
 if (!Force && !Reset) log([
@@ -49,7 +49,7 @@ var build_flags = {
 };
 
 var clean_flags = {
-	'-f --force': 'Force clean public data.',
+	'--force': 'Force clean public data.',
 	'--reset': 'Reset project to initial state.'
 };
 
