@@ -35,7 +35,7 @@ log([
 	(Deps ? colors.yellow('enabled') : colors.green('disabled')),
 	', data ',
 	(Reset ? colors.red('enabled') : colors.green('disabled')),
-].join(''))
+].join(''));
 
 if (argv._.length == 0 || argv._[0] == 'build') log([
 	'Build: mode ',
