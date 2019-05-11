@@ -24,10 +24,11 @@ var gulp = require('gulp'),
 var Prod = argv.p || argv.prod;
 var Lint = argv.l || argv.lint;
 var Maps = argv.m || argv.maps;
-var Force = argv.force;
+var Temp = argv.t || argv.temp;
+var Deps = argv.d || argv.deps;
 var Reset = argv.reset;
 
-if (!Force && !Reset) log([
+if (!Temp && !Deps && !Reset) log([
 	'Lint ',
 	(Lint ? colors.green('enabled') : colors.red('disabled')),
 	', sourcemaps ',
@@ -43,13 +44,13 @@ if (!Force && !Reset) log([
 
 var build_flags = {
 	'-p --prod': 'Builds in ' + colors.underline.green('production') + ' mode (minification, etc).',
-	'-d --dev': 'Builds in ' + colors.underline.yellow('development') + ' mode (default).',
 	'-l --lint': 'Lint JavaScript code.',
 	'-m --maps': 'Generate sourcemaps files.'
 };
 
 var clean_flags = {
-	'--force': 'Force clean public data.',
+	'-t --temp': 'Clean Temporary files.',
+	'-d --deps': 'Clean installed dependency.',
 	'--reset': 'Reset project to initial state.'
 };
 
@@ -106,8 +107,9 @@ var paths = {
 	},
 	clean: {
 		base: ['public/build/**', 'public/stuff/**'],
-		force: ['public/preview/**/*', 'uploads/**/*'],
-		reset: ['node_modules/**', 'public/cdn/**']
+		temp: ['public/preview/**/*', 'uploads/**/*'],
+		deps: ['node_modules/**', 'package-lock.json'],
+		data: ['public/cdn/**']
 	}
 };
 
@@ -118,8 +120,9 @@ var paths = {
 function clean(callback) {
 	var clean = paths.clean.base;
 
-	if (Force) clean = clean.concat(paths.clean.force);
-	if (Reset) clean = [].concat(paths.clean.base, paths.clean.force, paths.clean.reset);
+	if (Temp) clean = clean.concat(paths.clean.temp);
+	if (Deps) clean = clean.concat(paths.clean.deps);
+	if (Reset) clean = [].concat(paths.clean.temp, paths.clean.deps, paths.clean.data);
 
 	return rimraf('{' + clean.join(',') + '}', callback);
 }
