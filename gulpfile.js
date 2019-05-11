@@ -28,14 +28,22 @@ var Temp = argv.t || argv.temp;
 var Deps = argv.d || argv.deps;
 var Reset = argv.reset;
 
-if (!Temp && !Deps && !Reset) log([
-	'Lint ',
+log([
+	'Clean: temp ',
+	(Temp ? colors.yellow('enabled') : colors.green('disabled')),
+	', deps ',
+	(Deps ? colors.yellow('enabled') : colors.green('disabled')),
+	', data ',
+	(Reset ? colors.red('enabled') : colors.green('disabled')),
+].join(''))
+
+if (argv._.length == 0 || argv._[0] == 'build') log([
+	'Build: mode ',
+	(Prod ? colors.underline.green('production') : colors.underline.yellow('development')),
+	', lint ',
 	(Lint ? colors.green('enabled') : colors.red('disabled')),
 	', sourcemaps ',
 	(Maps ? colors.green('enabled') : colors.yellow('disabled')),
-	', build in ',
-	(Prod ? colors.underline.green('production') : colors.underline.yellow('development')),
-	' mode.',
 ].join(''));
 
 
