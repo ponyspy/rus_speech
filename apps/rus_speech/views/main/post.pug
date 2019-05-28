@@ -24,9 +24,9 @@ block content
 					.attach_price бесплатно
 					.attach_description= unit.i18n.description.get(locale)
 					if unit.preview
-						a.attach_button.preview(href=unit.preview)= (unit.attach ? 'предпросмотр' : 'скачать')
+						a.attach_button.preview(href=unit.preview, target='_blank')= (unit.attach ? 'предпросмотр' : 'скачать')
 					if unit.attach
-						a.attach_button.buy(href=unit.attach)= 'купить'
+						a.attach_button.buy(href=unit.attach, target='_blank')= 'купить'
 
 
 
