@@ -3,6 +3,9 @@
 		.list_item
 			a.item_rm.post(href='#', id=post._id) -- удалить
 			a.item_title(href='/admin/posts/edit/' + post._id, class=post.status =='hidden' ? 'hidden': '')= (post.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
+			span.item_preview
+				span= ' --> '
+				a(href='/posts/' + (post.sym || post._short_id), target='_blank') превью
 
 .list_counter
 	a.list_back(href='#'): b назад

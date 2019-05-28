@@ -5,9 +5,7 @@
 			a.item_title(href='/admin/categorys/edit/' + category._id, class=category.status)= (category.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
 			span.item_preview
 				span= ' --> '
-				a(href='/projects#' + category.sym, target='_blank') в проектах
-				span= ' -- '
-				a(href='/research#' + category.sym, target='_blank') в исследованиях
+				a(href='/#' + (category.sym || category._short_id), target='_blank') превью
 
 .list_counter
 	a.list_back(href='#'): b назад
