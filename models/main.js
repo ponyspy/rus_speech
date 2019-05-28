@@ -30,8 +30,8 @@ var postSchema = new Schema({
 	s_title: { type: String, trim: true, locale: true },
 	intro: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
-	categorys: [{ type: ObjectId, ref: 'Category' }],
 	poster: { type: String },
+	categorys: [{ type: ObjectId, ref: 'Category' }],
 	units: [{ type: ObjectId, ref: 'Unit' }],
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	status: String,
@@ -72,9 +72,9 @@ var unitSchema = new Schema({
 // ------------------------
 
 
-postSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
-unitSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+postSchema.index({'title.value': 'text', 'intro.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 categorySchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+unitSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 memberSchema.index({'name.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 
 
