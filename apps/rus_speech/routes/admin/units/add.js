@@ -38,7 +38,7 @@ module.exports = function(Model, Params) {
 
 		async.series([
 			async.apply(uploadFile, unit, 'units', 'attach', files.attach && files.attach[0], null),
-			async.apply(uploadFile, unit, 'units', 'preview', files.attach && files.attach[0], null),
+			async.apply(uploadFile, unit, 'units', 'preview', files.preview && files.preview[0], null),
 		], function(err, results) {
 			if (err) return next(err);
 
