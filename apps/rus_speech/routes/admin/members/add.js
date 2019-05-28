@@ -28,6 +28,7 @@ module.exports = function(Model, Params) {
 
 		member._short_id = shortid.generate();
 		member.status = post.status;
+		member.email = post.email;
 		member.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];

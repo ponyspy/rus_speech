@@ -24,4 +24,5 @@ block content
 				.mamber_item
 					.mamber_photo(style='background-image: url(' + member.photo + ')')
 					.member_name= member.i18n.name.get(locale)
+					a.member_email(href='mailto:' + member.email)= member.email
 					.member_intro= member.i18n.intro.get(locale)

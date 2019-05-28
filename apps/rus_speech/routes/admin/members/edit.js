@@ -31,6 +31,7 @@ module.exports = function(Model, Params) {
 			if (err) return next(err);
 
 			member.status = post.status;
+			member.email = post.email;
 			member.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];

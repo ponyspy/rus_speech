@@ -51,6 +51,7 @@ var memberSchema = new Schema({
 	name: { type: String, trim: true, locale: true },
 	intro: { type: String, trim: true, locale: true },
 	photo: { type: String },
+	email: { type: String },
 	status: String,	// hidden
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now, index: true },

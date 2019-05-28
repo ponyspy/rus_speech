@@ -23,6 +23,8 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Имя:
 			+form_text_single('name')
+			.form_title Email:
+			input(type='text', name='email')
 			.form_title Интро:
 			+form_text_multi('intro')
 			.form_title Фото:
