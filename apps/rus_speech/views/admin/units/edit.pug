@@ -25,9 +25,9 @@ block content
 			+form_text_single('title', unit)
 			.form_title Описание:
 			+form_text_single('description', unit)
-			.form_title Файл ZIP / PDF:
+			.form_title Файл ZIP / PDF - ОСНОВНОЙ:
 			+form_single_file('attach', unit)(accept='application/pdf,application/zip')
-			.form_title Превью ZIP / PDF:
+			.form_title Файл ZIP / PDF - ПРЕВЬЮ:
 			+form_single_file('preview', unit)(accept='application/pdf,application/zip')
 			.form_title Статус:
 			select(name='status')
