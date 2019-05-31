@@ -13,14 +13,14 @@ var preview_path = __glob_root + '/public/preview/';
 
 module.exports.file = function(obj, base_path, field_name, file, del_file, callback) {
 	if (del_file && obj[field_name]) {
-		rimraf.sync(public_path + obj[field_name].replace(/pdf|zip/, '*'), { glob: true });
+		rimraf.sync(public_path + obj[field_name], { glob: true });
 		obj[field_name] = undefined;
 	}
 
 	if (del_file || !file) return callback.call(null, null, obj);
 
 	var file_path = '/cdn/' + base_path + '/' + obj._id + '/files';
-	var file_name = field_name + '.' + mime.getExtension(file.mimetype);
+	var file_name = Date.now() + '.' + mime.getExtension(file.mimetype);
 
 	rimraf(public_path + file_path + '/' + field_name + '.*', { glob: true }, function() {
 		mkdirp(public_path + file_path, function() {
